@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         Loading,
         InitializingPlayers,
+        ShowTurnUI,
         ChoosingPhace,
         ActionPhace,
     }
@@ -65,6 +66,8 @@ public class GameManager : MonoBehaviour
 
         // Disable user UI so we'r ready to give turn to next player
         // Give turn to next player (func below)
+
+        
     }
 
 
