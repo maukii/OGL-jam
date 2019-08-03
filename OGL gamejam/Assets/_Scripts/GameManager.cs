@@ -3,18 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class PlayerData
+{
+    public string playerName;
+    public bool isTrator;
+    public CharacterData character;
+
+    public PlayerData(string playerName, CharacterData character)
+    {
+        this.playerName = playerName;
+        this.character = character;
+    }
+
+}
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance;
 
-
+    // Use these to assaing player names and graphics
+    [SerializeField] private List<PlayerData> playerDatas = new List<PlayerData>(4); 
     public Character[] Players { get { return players; } }
     [SerializeField] private Character[] players = new Character[4];
 
-
     [SerializeField] private List<ActionData> roundActions = new List<ActionData>();
+
 
     private void Awake()
     {
@@ -25,9 +40,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        for (int i = 0; i < players.Length; i++)
+        int trator = UnityEngine.Random.Range(1, 4);
+        for (int i = 0; i < 4; i++)
         {
-            players[i] = new Character();
+            PlayerData data = new PlayerData("", null);
+            if (trator == i)
+                data.isTrator = true;
+
+            playerDatas.Add(data);
         }
     }
 
@@ -50,17 +70,17 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void StartTurn()
+    // Call this when player enters name and chooses character and confirms
+    public void SavePlayerData(int playerNumber, string name, CharacterData data)
     {
-
+        playerDatas[playerNumber - 1].playerName = name;
+        playerDatas[playerNumber - 1].character = data;
     }
 
 
-    public void SavePlayerData(int playerNumber, string name, CharacterData data)
+    public void InitializePlayer()
     {
-        // Save player inputs (name and character)
-        players[playerNumber].PlayerName = name;
-        players[playerNumber].CharacterProfile = data.profile;
+        // Loop throught
     }
 
 
