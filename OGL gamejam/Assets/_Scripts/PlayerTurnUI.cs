@@ -8,9 +8,8 @@ public class PlayerTurnUI : MonoBehaviour
 
     public static PlayerTurnUI Instance;
 
-
     [SerializeField] private Text playerNameText;
-    [SerializeField] private string currentPlayerName;
+
 
     private void Awake()
     {

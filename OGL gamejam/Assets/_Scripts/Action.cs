@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum Action
 {
+    Idle,
     Attack,
     Heal,
     // add more
@@ -30,6 +31,9 @@ public struct ActionData
     {
         switch (action)
         {
+            case Action.Idle:
+                Debug.Log(user + " idling...");
+                break;
             case Action.Attack:
                 user.Attack((SOWeapon)item, target);
                 break;
