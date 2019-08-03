@@ -18,6 +18,7 @@ MonoBehaviour:
   Sound: {fileID: 0}
   Damage: 55
   HitChance: 88
-  GoreEffect: {fileID: 0}
+  GoreEffect: {fileID: 116999334678786012, guid: 6e7067be9544e2e40877169628cc7ac9,
+    type: 3}
   MissEffect: {fileID: 8156759254607993216, guid: 127c23ec9d9dae94590464a87e92ce2f,
     type: 3}

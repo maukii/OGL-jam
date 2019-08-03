@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de52ac0d4befdc04faa35337c0f30341, type: 3}
-  m_Name: Joe
+  m_Name: Sheriff
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  Icon: {fileID: 0}
+  Name: Sheriff
+  Description: Hand of the LAW
+  Icon: {fileID: 21300000, guid: 080f904fb09efd643b977eac2dd407a8, type: 3}
   Sound: {fileID: 0}
-  MaxHP: 100
-  mainWeapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
+  MaxHP: 500
+  mainWeapon: {fileID: 11400000, guid: 4fb03c2bede4b5f48aaa2e9bc5f38836, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: b4bba420456cb914faa02b1aa9d42910, type: 2}
   potion: {fileID: 11400000, guid: 614c3af1de60b6e49b2c4bde3dfd3ade, type: 2}

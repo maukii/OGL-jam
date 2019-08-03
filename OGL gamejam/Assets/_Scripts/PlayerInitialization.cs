@@ -10,11 +10,13 @@ public class PlayerInitialization : MonoBehaviour
     [SerializeField] private bool playerNameNullable = true;
 
     [SerializeField] private TMP_InputField playerNameInputField;
+    [SerializeField] private TMP_Text characterName;
+    [SerializeField] private TMP_Text characterDescription;
     private PlayerTurnUI turnUI;
     private int playerTurn = 1;
 
     private GameObject activeCharacter;
-
+    private SOCharacterProfile selectedProfile;
 
     private void Start()
     {
@@ -32,6 +34,11 @@ public class PlayerInitialization : MonoBehaviour
 
         activeCharacter = choice;
         choice.transform.localScale = Vector3.one * 1.1f;
+
+        selectedProfile = activeCharacter.GetComponent<CharacterData>().profile;
+
+        characterName.text = selectedProfile.Name;
+        characterDescription.text = selectedProfile.Description;
         // Highlight somehow
     }
 
