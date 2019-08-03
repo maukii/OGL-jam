@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private Character[] players = new Character[4];
+    public Character[] Players { get { return players; } }
 
     // TODO:: Keep track of which players turn it is
 
@@ -50,11 +51,11 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void SavePlayerData(int playerNumber, string name/*, characterp characterChoice*/)
+    public void SavePlayerData(int playerNumber, string name, CharacterData data)
     {
         // Save player inputs (name and character)
         players[playerNumber].PlayerName = name;
-        //players[playerNumber].CharacterProfile = characterChoice;
+        players[playerNumber].CharacterProfile = data.profile;
     }
 
     // TODO:: Make some UI controller to allow players to use when calling turn decision actions 
@@ -62,6 +63,6 @@ public class GameManager : MonoBehaviour
     //      --> Heal
     //      --> DoSomethingElse
 
-
+    //      --> not here lol in gameUIController
 
 }
