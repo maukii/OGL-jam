@@ -33,28 +33,21 @@ public class Character : MonoBehaviour
         OnHpChange.Invoke();
     }
 
-    public void Attack(SOWeapon weapon, GameObject target)
+    public void Attack(SOWeapon weapon, Character targetCharacter)
     {
-        Character targetCharacter = target.GetComponent<Character>();
-        if(target)
+
+        if(Random.Range(0,100)<weapon.HitChance)
         {
-            if(Random.Range(0,100)<weapon.HitChance)
-            {
-                targetCharacter.GetDamage(weapon.Damage);
-            }
-            else
-            {
-                Debug.Log("Missed target");
-            }
+            targetCharacter.GetDamage(weapon.Damage);
+        }
+        else
+        {
+            Debug.Log("Missed target");
         }
     }
 
-    public void Heal(SOHealthPotion potion, GameObject target)
+    public void Heal(SOHealthPotion potion, Character targetCharacter)
     {
-        Character targetCharacter = target.GetComponent<Character>();
-        if(target)
-        {
-            targetCharacter.GainHP(potion.HealAmount);
-        }
+        targetCharacter.GainHP(potion.HealAmount);
     }
 }

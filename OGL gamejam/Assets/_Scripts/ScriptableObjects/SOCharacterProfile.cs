@@ -8,7 +8,7 @@ using UnityEngine;
 public class SOCharacterProfile : SOBaseData
 {
     public float MaxHP=100f;
-    [SerializeField, Space(10)] private SOWeapon mainWeapon;
-    [SerializeField] private SOWeapon secondaryWeapon;
-    [SerializeField, Space(10)] private SOHealthPotion potion;
+    [Space(10)] public SOWeapon mainWeapon;
+    public SOWeapon secondaryWeapon;
+    [Space(10)] public SOHealthPotion potion;
 }
