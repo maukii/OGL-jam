@@ -27,7 +27,7 @@ public class GameUIController : MonoBehaviour
     {
         rootUI.SetActive(true);
         basicActionsUI.SetActive(true);
-        traitorUI.SetActive(newPlayer.IsTraitor);
+        traitorUI.SetActive(newPlayer.characterData.isTrator);
 
         attackWindowUI.SetActive(false);
         inventoryWindowUI.SetActive(false);

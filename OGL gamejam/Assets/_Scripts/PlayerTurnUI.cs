@@ -25,7 +25,7 @@ public class PlayerTurnUI : MonoBehaviour
     
     public void StartPlayerTurn(Character player) // Use when players name is known
     {
-        playerNameText.text = player.PlayerName + "'s turn!";
+        playerNameText.text = player.characterData.playerName + "'s turn!";
         gameObject.SetActive(true);
     }
 

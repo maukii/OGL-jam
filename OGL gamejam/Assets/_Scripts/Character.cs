@@ -5,16 +5,19 @@ using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
 
-    public string PlayerName;     //Actual players name set in setup phase
-    public bool IsTraitor = false; //Set in set up phase
     [HideInInspector] public float HP = 100f;
-    public SOCharacterProfile CharacterProfile; //Character profile selected in setup phase
+    public PlayerData characterData;
 
+    private SOCharacterProfile profile;
      public UnityEvent OnHpChange; //Fires on all hp- change events. 
 
+    private void Awake() 
+    {
+        profile = characterData.character;
+    }
     private void Start() 
     {
-        HP = CharacterProfile.MaxHP;
+        HP = profile.MaxHP;
     }
     public void GetDamage(float damage)
     {
@@ -28,7 +31,7 @@ public class Character : MonoBehaviour
 
     public void GainHP(float amount)
     {
-        HP = Mathf.Clamp(HP+amount,0,CharacterProfile.MaxHP);
+        HP = Mathf.Clamp(HP+amount,0,profile.MaxHP);
 
         OnHpChange.Invoke();
     }

@@ -38,6 +38,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private int numberOfActions = 2;
 
     private GameManager manager;
+    private SOCharacterProfile profile;
     private float maxDamage, temporaryHp;
 
     public UnityEvent AIStateChange;
@@ -50,10 +51,11 @@ public class EnemyAI : MonoBehaviour
     private void Awake() 
     {
         AI = GetComponent<Character>();    
+        profile = AI.characterData.character;
         manager = GameManager.Instance;
 
-        maxDamage = AI.CharacterProfile.mainWeapon.Damage > AI.CharacterProfile.secondaryWeapon.Damage?
-        AI.CharacterProfile.mainWeapon.Damage:AI.CharacterProfile.secondaryWeapon.Damage;
+        maxDamage = profile.mainWeapon.Damage > profile.secondaryWeapon.Damage?
+        profile.mainWeapon.Damage:profile.secondaryWeapon.Damage;
     }
     [ContextMenu("Think")]
     public void Think()
@@ -81,15 +83,16 @@ public class EnemyAI : MonoBehaviour
        
     }
 
+    //Attack
     private void Attack()
     {
         bool targetFound = false;
         Character target;
-        SOWeapon selectedWeapon = Random.Range(0,2)==0?AI.CharacterProfile.mainWeapon:AI.CharacterProfile.secondaryWeapon;
+        SOWeapon selectedWeapon = Random.Range(0,2)==0?profile.mainWeapon:profile.secondaryWeapon;
         do
         {
             target = manager.Players[Random.Range(0,manager.Players.Length)];
-            if(target.IsTraitor && target.HP<maxDamage)
+            if(target.characterData.isTrator && target.HP<maxDamage)
             {
                 continue;
             }
@@ -104,8 +107,8 @@ public class EnemyAI : MonoBehaviour
 
     private void HealSelf()
     {
-        temporaryHp += AI.CharacterProfile.potion.HealAmount;
-        manager.MakeAction(AI,AI,Action.Heal,AI.CharacterProfile.potion);
+        temporaryHp += profile.potion.HealAmount;
+        manager.MakeAction(AI,AI,Action.Heal,profile.potion);
         Debug.Log("Healing self");
     }
 
