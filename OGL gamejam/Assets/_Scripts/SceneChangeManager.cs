@@ -33,10 +33,10 @@ public class SceneChangeManager : MonoBehaviour
     {
         FadeIn();
 
-        if(arg0.name == "Game")
-        {
-            GameManager.Instance.ChangeGameState(GameManager.GameState.InitializingPlayers);
-        }
+        //if(arg0.name == "Game")
+        //{
+        //    GameManager.Instance.ChangeGameState(GameManager.GameState.InitializingPlayers);
+        //}
     }
 
 

@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Player
+{
+    public int id;
+    public string name;
+    public GameObject chosenCharacter;
+}
+
 public class GameManager : MonoBehaviour
 {
 
@@ -11,21 +18,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool debugGameStateChanges = false;
 
+    [SerializeField] private Player[] players = new Player[4];
+
     // TODO:: Keep track of which players turn it is
-
-    public enum GameState
-    {
-        Loading,
-        InitializingPlayers,
-        ShowTurnUI,
-        ChoosingPhace,
-        ActionPhace,
-    }
-
-    // Other scripts can listen to this event by subscribing with:: GameManager.Instance += FunctionToHappenWhenStateChanges
-    [SerializeField] private GameState currentGameState = GameState.Loading;
-    public delegate void GameStateChange();
-    public static event GameStateChange OnGameStateChange;
 
     private void Awake()
     {
@@ -36,25 +31,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    // Check for TurnEnd() funs here and if all turns have been played change state to action state
-    public void ChangeGameState(GameState newState)
-    { 
-        if(currentGameState != newState)
-        {
-            // Swap to new state
-            currentGameState = newState;
-
-            if (debugGameStateChanges) Debug.Log("GameState changed to: " + currentGameState);
-
-            // Send info about the game state change
-            OnGameStateChange?.Invoke();
-        }
-
-        if ((int)currentGameState == Enum.GetValues(typeof(GameState)).Length)
-            currentGameState = 0;
-
-    } 
 
 
     // Call when players time ends or player has made decision for this turn
@@ -71,18 +47,18 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // When end turn is called get the next player in the turn list 
-    private void NewPlayersTurn(/*Player newPlayer*/)
+    public void StartTurn()
     {
-
-        // New player to play their turn is passed as param
-        // Enable user UI so they can make their decisions for this turn
-        
-        // Check from newPlayer if they are marked as traitor and enable traitor UI as well
 
     }
 
 
+    public void SavePlayerData(int playerNumber, string name, GameObject characterChoice)
+    {
+        // Save player inputs (name and character)
+        players[playerNumber].name = name;
+        players[playerNumber].chosenCharacter = characterChoice;
+    }
 
     // TODO:: Make some UI controller to allow players to use when calling turn decision actions 
     //      --> Attack
