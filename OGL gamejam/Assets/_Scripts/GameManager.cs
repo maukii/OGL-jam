@@ -60,8 +60,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Failed to assign " + id);
         }
-        Debug.Log(playerDatas.Count );
-        Debug.Log(Players.Count);
     }
 
     // Call this when all players have made their choice

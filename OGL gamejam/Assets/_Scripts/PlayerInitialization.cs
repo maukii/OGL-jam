@@ -7,6 +7,8 @@ using TMPro;
 public class PlayerInitialization : MonoBehaviour
 {
 
+    [SerializeField] private bool playerNameNullable = true;
+
     [SerializeField] private TMP_InputField playerNameInputField;
     private PlayerTurnUI turnUI;
     private int playerTurn = 1;
@@ -41,16 +43,19 @@ public class PlayerInitialization : MonoBehaviour
 
     public void Confirm()
     {
-        //if(playerNameInputField.text == string.Empty) // Can also compare to existing player names
-        //{
-        //    Debug.LogError("Enter player name before continuing");
-        //    return;
-        //}
-        //else if(activeCharacter == null)
-        //{
-        //    Debug.LogError("Choose a character before continuing");
-        //    return;
-        //}
+        if(playerNameNullable)
+        {
+            if(playerNameInputField.text == string.Empty) // Can also compare to existing player names
+            {
+                Debug.LogError("Enter player name before continuing");
+                return;
+            }
+            else if(activeCharacter == null)
+            {
+                Debug.LogError("Choose a character before continuing");
+                return;
+            }
+        }
 
         // Save player name and characterChoice to GameManager
         GameManager.Instance.SavePlayerData(playerTurn, playerNameInputField.text, activeCharacter.GetComponent<CharacterData>());
