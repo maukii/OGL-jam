@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
 
-    [SerializeField] private Character[] players = new Character[4];
     public Character[] Players { get { return players; } }
+    [SerializeField] private Character[] players = new Character[4];
 
-    // TODO:: Keep track of which players turn it is
+
+    [SerializeField] private List<ActionData> roundActions = new List<ActionData>();
 
     private void Awake()
     {
@@ -31,17 +32,21 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Call when players time ends or player has made decision for this turn
-    public void EndTurn()
+    // Call this when all players have made their choice
+    public void RoundEnd()
     {
-        // Change turn to next player 
 
-        // If previus turn was last players --> change GameState to action phace
+        // Send message to enemy to make it's decision and add it to the list
 
-        // Disable user UI so we'r ready to give turn to next player
-        // Give turn to next player (func below)
+        // Execute them (in order)
+        foreach (var action in roundActions)
+        {
+            action.ExecuteAction();
+        }
 
-        
+        // Clear the roundActions list
+        roundActions.Clear();
+
     }
 
 
@@ -58,11 +63,13 @@ public class GameManager : MonoBehaviour
         players[playerNumber].CharacterProfile = data.profile;
     }
 
-    // TODO:: Make some UI controller to allow players to use when calling turn decision actions 
-    //      --> Attack
-    //      --> Heal
-    //      --> DoSomethingElse
 
-    //      --> not here lol in gameUIController
+    // Creates a new action and saves to list of roundActionss
+    public void MakeAction(Character user, Character target, Action action, SOBaseData item)
+    {
+        ActionData newAction = new ActionData(user, target, action, item);
+        roundActions.Add(newAction);
+    }
+
 
 }
