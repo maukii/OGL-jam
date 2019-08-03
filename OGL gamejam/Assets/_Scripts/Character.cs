@@ -8,12 +8,19 @@ public class Character : MonoBehaviour
     [HideInInspector] public float HP = 100f;
     public PlayerData characterData;
 
+    public bool IsAI = false;
+
     private SOCharacterProfile profile;
      public UnityEvent OnHpChange; //Fires on all hp- change events. 
 
     private void Awake() 
     {
-        GameManager.Instance.AssignPlayer(ID, this);
+        if(!IsAI)
+        {
+            GameManager.Instance.AssignPlayer(ID, this);
+        }
+        profile = characterData.character;
+
     }
     private void Start() 
     {

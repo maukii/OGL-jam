@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
         SOWeapon selectedWeapon = Random.Range(0,2)==0?profile.mainWeapon:profile.secondaryWeapon;
         do
         {
-            target = manager.Players[Random.Range(0,manager.Players.Length)];
+            target = manager.Players[Random.Range(0,manager.Players.Count)];
             if(target.characterData.isTrator && target.HP<maxDamage)
             {
                 continue;

@@ -800,5 +800,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4cf28a08beb546e468aeeb93b5aa5b5e,
         type: 2}
+    - target: {fileID: 6361525934976979412, guid: 461fe5e5fbc5b4b4dbcdb0f5e65e5acc,
+        type: 3}
+      propertyPath: IsAI
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 461fe5e5fbc5b4b4dbcdb0f5e65e5acc, type: 3}
