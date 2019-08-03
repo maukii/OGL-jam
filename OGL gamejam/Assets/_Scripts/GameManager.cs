@@ -8,9 +8,9 @@ public class PlayerData
 {
     public string playerName;
     public bool isTrator;
-    public CharacterData character;
+    public SOCharacterProfile character;
 
-    public PlayerData(string playerName, CharacterData character)
+    public PlayerData(string playerName, SOCharacterProfile character)
     {
         this.playerName = playerName;
         this.character = character;
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void SavePlayerData(int playerNumber, string name, CharacterData data)
     {
         playerDatas[playerNumber - 1].playerName = name;
-        playerDatas[playerNumber - 1].character = data;
+        playerDatas[playerNumber - 1].character = data.profile;
     }
 
 
