@@ -5,17 +5,28 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
 
+    public static TurnManager Instance;
+
     private bool updateTimer = false;
 
     [Range(60, 360)]
     [SerializeField] private float turnTime = 120f; // 2min by default
-    private float timer;
+    [SerializeField] private float timer;
 
     private List<Character> players = new List<Character>();
     private PlayerTurnUI turnUI;
     [SerializeField] private GameUIController gameUI;
 
-    private Character choosingPlayer;
+    [HideInInspector] public Character choosingPlayer;
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     // Players list is populated
     private void Start()
@@ -81,7 +92,10 @@ public class TurnManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        turnUI.okButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveListener(() => StartTurn());
+        UnityEngine.UI.Button button = turnUI.okButton;
+
+        if(button != null)
+            turnUI.okButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveListener(() => StartTurn());
     }
 
 }
