@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameUIController : MonoBehaviour
 {
 
+    public static GameUIController Instance;
+
     private Character choosingPlayer;
 
     [Header("Interaction UI")]
@@ -33,6 +35,15 @@ public class GameUIController : MonoBehaviour
 
     // Update these params as player clicks UI buttons 
     private ActionData action = new ActionData();
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void Start()
     {
