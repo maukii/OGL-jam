@@ -54,9 +54,15 @@ public class EnemyAI : MonoBehaviour
         profile = AI.characterData.character;
         manager = GameManager.Instance;
 
+
+    }
+
+    private void Start() 
+    {
         maxDamage = profile.mainWeapon.Damage > profile.secondaryWeapon.Damage?
         profile.mainWeapon.Damage:profile.secondaryWeapon.Damage;
     }
+
     [ContextMenu("Think")]
     public void Think()
     {

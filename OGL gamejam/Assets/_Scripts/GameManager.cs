@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     // Use these to assaing player names and graphics
     [SerializeField] private List<PlayerData> playerDatas = new List<PlayerData>(4); 
-    public Character[] Players { get { return players; } }
+    public Character[] Players {get { return players;}}
     [SerializeField] private Character[] players = new Character[4];
 
     [SerializeField] private List<ActionData> roundActions = new List<ActionData>();
@@ -51,6 +51,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AssignPlayer(int id, Character character)
+    {
+        if(id<playerDatas.Count && id<Players.Length)
+        {
+            character.characterData = playerDatas[id];
+            Players[id] = character;
+        }
+    }
 
     // Call this when all players have made their choice
     public void RoundEnd()

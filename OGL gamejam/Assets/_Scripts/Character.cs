@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
-
+    [SerializeField] private int ID = 0;
     [HideInInspector] public float HP = 100f;
     public PlayerData characterData;
 
@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
 
     private void Awake() 
     {
-        profile = characterData.character;
+        GameManager.Instance.AssignPlayer(ID, this);
     }
     private void Start() 
     {
