@@ -31,10 +31,10 @@ public struct ActionData
         switch (action)
         {
             case Action.Attack:
-                user.Attack((SOWeapon)item, target.gameObject);
+                user.Attack((SOWeapon)item, target);
                 break;
             case Action.Heal:
-                user.Heal((SOHealthPotion)item, target.gameObject);
+                user.Heal((SOHealthPotion)item, target);
                 break;
             default:
                 Debug.LogError("Execute action error");
