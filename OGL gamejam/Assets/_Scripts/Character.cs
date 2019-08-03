@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
 
     private SOCharacterProfile profile;
      public UnityEvent OnHpChange; //Fires on all hp- change events. 
+     public UnityEvent OnCharacterChange;
 
     private void Awake() 
     {
@@ -20,6 +21,7 @@ public class Character : MonoBehaviour
             GameManager.Instance.AssignPlayer(ID, this);
         }
         profile = characterData.character;
+        OnCharacterChange.Invoke();
 
     }
     private void Start() 

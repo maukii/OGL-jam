@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Basic rifle
   Icon: {fileID: 0}
   Sound: {fileID: 0}
-  Damage: 55
+  Damage: 33
   HitChance: 88
   GoreEffect: {fileID: 116999334678786012, guid: 6e7067be9544e2e40877169628cc7ac9,
     type: 3}
