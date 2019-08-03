@@ -9,5 +9,6 @@ public class SOHealthPotion : SOBaseData
 {
     [Space(10)]
     public float HealAmount;
+    public GameObject HealingEffect;
 
 }

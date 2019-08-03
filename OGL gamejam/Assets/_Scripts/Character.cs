@@ -49,15 +49,40 @@ public class Character : MonoBehaviour
         if(Random.Range(0,100)<weapon.HitChance)
         {
             targetCharacter.GetDamage(weapon.Damage);
+            if(weapon.GoreEffect)
+            {
+                Instantiate(weapon.GoreEffect,targetCharacter.transform.position, Quaternion.identity);
+            }
         }
         else
         {
             Debug.Log("Missed target");
+            if(weapon.MissEffect)
+            {
+                Instantiate(weapon.MissEffect,targetCharacter.transform.position, Quaternion.identity);
+            }
+
         }
     }
 
     public void Heal(SOHealthPotion potion, Character targetCharacter)
     {
         targetCharacter.GainHP(potion.HealAmount);
+        if(potion.HealingEffect)
+        {
+            Instantiate(potion.HealingEffect,targetCharacter.transform.position, Quaternion.identity);
+        }
+    }
+
+        [ContextMenu("SelfHeal")]
+    public void SelfHeal()
+    {
+        Heal(profile.potion, this);
+    }
+
+    [ContextMenu("AttackSelf")]
+    public void SelfAttack()
+    {
+        Attack(profile.mainWeapon,this);
     }
 }
