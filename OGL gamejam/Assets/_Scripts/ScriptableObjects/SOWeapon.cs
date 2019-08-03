@@ -11,6 +11,8 @@ public class SOWeapon : SOBaseData {
    public float Damage;
    public float HitChance;
 
+   public GameObject GoreEffect;
+   public GameObject MissEffect;
 
 
 }

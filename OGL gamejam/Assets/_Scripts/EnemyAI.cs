@@ -111,6 +111,7 @@ public class EnemyAI : MonoBehaviour
        Debug.Log("Attacked");
     }
 
+    
     private void HealSelf()
     {
         temporaryHp += profile.potion.HealAmount;

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc661624143205e4b95a73bf89f882c9, type: 3}
-  m_Name: Rifle
+  m_Name: kk
   m_EditorClassIdentifier: 
-  Name: Rifle
-  Description: Basic rifle
+  Name: 
+  Description: 
   Icon: {fileID: 0}
   Sound: {fileID: 0}
-  Damage: 55
-  HitChance: 88
+  Damage: 0
+  HitChance: 0.89
   GoreEffect: {fileID: 0}
   MissEffect: {fileID: 8156759254607993216, guid: 127c23ec9d9dae94590464a87e92ce2f,
     type: 3}
