@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
-    [SerializeField] private int ID = 0;
+    public int ID = 0;
     [HideInInspector] public float HP = 100f;
     public PlayerData characterData;
 

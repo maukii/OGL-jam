@@ -112,6 +112,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &379745757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8120087339729724028, guid: b48fed54eb4835c459cb6bdda7209fe4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1601924866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1601924866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,6 +251,11 @@ PrefabInstance:
       propertyPath: playerNameText
       value: 
       objectReference: {fileID: 1601924867}
+    - target: {fileID: 4181865920888216646, guid: b48fed54eb4835c459cb6bdda7209fe4,
+        type: 3}
+      propertyPath: okButton
+      value: 
+      objectReference: {fileID: 379745757}
     - target: {fileID: 8120087339729724028, guid: b48fed54eb4835c459cb6bdda7209fe4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

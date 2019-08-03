@@ -11,7 +11,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private float turnTime = 120f; // 2min by default
     private float timer;
 
-    private Character[] players = new Character[4];
+    private List<Character> players = new List<Character>();
     private PlayerTurnUI turnUI;
     [SerializeField] private GameUIController gameUI;
 
@@ -23,7 +23,7 @@ public class TurnManager : MonoBehaviour
         players = GameManager.Instance.Players;
         turnUI = PlayerTurnUI.Instance;
 
-        turnUI.transform.Find("Accept_Button").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => StartTurn());
+        turnUI.okButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => StartTurn());
 
         // Choose who starts / randomize order / go in order ??
         choosingPlayer = players[0];
@@ -48,7 +48,7 @@ public class TurnManager : MonoBehaviour
         // Disable ActionUI
 
         // Give turn to next player if there is players left
-        if(choosingPlayer.ID < players.Length)
+        if(choosingPlayer.ID < players.Count)
         {
             choosingPlayer = players[choosingPlayer.ID + 1];
             gameUI.TurnChange(choosingPlayer);
@@ -81,7 +81,7 @@ public class TurnManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        turnUI.transform.Find("Accept_Button").GetComponent<UnityEngine.UI.Button>().onClick.RemoveListener(() => StartTurn());
+        turnUI.okButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveListener(() => StartTurn());
     }
 
 }

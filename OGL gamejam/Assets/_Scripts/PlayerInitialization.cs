@@ -41,16 +41,16 @@ public class PlayerInitialization : MonoBehaviour
 
     public void Confirm()
     {
-        if(playerNameInputField.text == string.Empty) // Can also compare to existing player names
-        {
-            Debug.LogError("Enter player name before continuing");
-            return;
-        }
-        else if(activeCharacter == null)
-        {
-            Debug.LogError("Choose a character before continuing");
-            return;
-        }
+        //if(playerNameInputField.text == string.Empty) // Can also compare to existing player names
+        //{
+        //    Debug.LogError("Enter player name before continuing");
+        //    return;
+        //}
+        //else if(activeCharacter == null)
+        //{
+        //    Debug.LogError("Choose a character before continuing");
+        //    return;
+        //}
 
         // Save player name and characterChoice to GameManager
         GameManager.Instance.SavePlayerData(playerTurn, playerNameInputField.text, activeCharacter.GetComponent<CharacterData>());
