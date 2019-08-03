@@ -100,6 +100,10 @@ public class GameManager : MonoBehaviour
         ActionData newAction = new ActionData(user, target, action, item);
         roundActions.Add(newAction);
     }
+    public void MakeAction(ActionData action)
+    {
+        roundActions.Add(action);
+    }
 
 
 }
