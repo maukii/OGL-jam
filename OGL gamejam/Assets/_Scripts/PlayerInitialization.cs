@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerInitialization : MonoBehaviour
 {
 
-    [SerializeField] private InputField playerNameInputField;
+    [SerializeField] private TMP_InputField playerNameInputField;
     private PlayerTurnUI turnUI;
     private int playerTurn = 1;
 
