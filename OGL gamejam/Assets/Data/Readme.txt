@@ -1,0 +1,1 @@
+Data(weapons, characterprofiles, potions) is created thru Unity editor create menu in project view by Create/GameAssets/[data]
