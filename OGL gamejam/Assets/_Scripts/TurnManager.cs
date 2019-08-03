@@ -15,7 +15,7 @@ public class TurnManager : MonoBehaviour
 
     private List<Character> players = new List<Character>();
     private PlayerTurnUI turnUI;
-    [SerializeField] private GameUIController gameUI;
+    private GameUIController gameUI;
 
     [HideInInspector] public Character choosingPlayer;
 
@@ -26,6 +26,8 @@ public class TurnManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        gameUI = GetComponent<GameUIController>();
     }
 
     // Players list is populated

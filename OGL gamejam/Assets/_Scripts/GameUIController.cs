@@ -8,21 +8,19 @@ public class GameUIController : MonoBehaviour
 
     private Character choosingPlayer;
 
-    // Base UI windows
-    [SerializeField] private GameObject rootUI;
-    [SerializeField] private GameObject basicActionsUI;
-    [SerializeField] private GameObject traitorUI;
 
-    // Action spesific extra windows
-    [SerializeField] private GameObject attackWindowUI;
-    [SerializeField] private GameObject inventoryWindowUI;
+    // Use these with new UI
+    [SerializeField] private GameObject actionScreenUI;
+    [SerializeField] private GameObject privateScreenUI;
 
-    [SerializeField] private Button[] targetButtons; // All others than the player
-    private Character[] otherPlayers = new Character[3];
+    [SerializeField] private GameObject menuBasicUI;
+    [SerializeField] private GameObject menuInventoryUI;
+    [SerializeField] private GameObject menuTargetUI;
+    [SerializeField] private GameObject tumbleweed;
+      
 
-    // This will manage turn changes and UI updateing 
-    // Take player input from UI buttons
-    // Send message when coice has been made
+    // Update these params as player clicks UI buttons 
+    private ActionData action = new ActionData();
 
 
     #region public UI funcs
@@ -32,40 +30,12 @@ public class GameUIController : MonoBehaviour
     {
         choosingPlayer = newPlayer;
 
-        rootUI.SetActive(true);
-        basicActionsUI.SetActive(true);
-        traitorUI.SetActive(newPlayer.characterData.isTrator);
+        tumbleweed.SetActive(false);
+        actionScreenUI.SetActive(false);
+        privateScreenUI.SetActive(true);
 
-        attackWindowUI.SetActive(false);
-        inventoryWindowUI.SetActive(false);
-
-        otherPlayers = GetOtherPlayers();
-
-        // Update targets list (names and references)
-        for (int i = 0; i < otherPlayers.Length; i++)
-        {
-            targetButtons[i].GetComponentInChildren<TMPro.TMP_Text>().text = otherPlayers[i].characterData.playerName;
-        }
-
-    }
-
-    private Character[] GetOtherPlayers()
-    {
-        List<Character> otherCharacters = new List<Character>();
-        List<Character> players = GameManager.Instance.Players;
-
-        foreach (Character player in players)
-        {
-            if (player != choosingPlayer)
-                otherCharacters.Add(player);
-        }
-
-        return otherCharacters.ToArray();
-    }
-
-    public void ToggleAttackWindow(bool active)
-    {
-        attackWindowUI.SetActive(active);
+        ChangeOpenMenu(menuBasicUI);
+        action.user = choosingPlayer;
     }
 
     public void Attack()
@@ -74,12 +44,24 @@ public class GameUIController : MonoBehaviour
         //GameManager.Instance.MakeAction(choosingPlayer, )
     }
 
-    public void ToggleInventory(bool active)
+    public void ChangeAction(Action newAction)
     {
-        inventoryWindowUI.SetActive(active);
+        action.action = newAction;
     }
 
-    // Add more as we need
+    public void ChangeTarget(Character target)
+    {
+        action.target = target;
+    }
+
+    public void ChangeOpenMenu(GameObject whatToOpen)
+    {
+        menuBasicUI.SetActive(false);
+        menuInventoryUI.SetActive(false);
+        menuTargetUI.SetActive(false);
+
+        whatToOpen.SetActive(true);
+    }
 
     #endregion
 
