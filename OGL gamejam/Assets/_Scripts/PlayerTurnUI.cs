@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerTurnUI : MonoBehaviour
 {
 
     public static PlayerTurnUI Instance;
 
-    [SerializeField] private Text playerNameText;
+    [SerializeField] private TMP_Text headerText;
+    [SerializeField] private TMP_Text playerNameText;
     public Button okButton;
 
 
@@ -25,14 +27,16 @@ public class PlayerTurnUI : MonoBehaviour
     
     public void StartPlayerTurn(Character player) // Use when players name is known
     {
-        playerNameText.text = player.characterData.playerName + "'s turn!";
+        headerText.text = "";
+        playerNameText.text = player.characterData.playerName;
         gameObject.SetActive(true);
     }
 
 
     public void StartPlayerTurn(string playerName) // Used to set text to Player 1's turn etc.
     {
-        playerNameText.text = playerName + "'s turn!";
+        headerText.text = "Character creation";
+        playerNameText.text = playerName;
         gameObject.SetActive(true);
     }
 

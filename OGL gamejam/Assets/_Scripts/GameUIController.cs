@@ -28,18 +28,18 @@ public class GameUIController : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text className;
 
 
-    [Header("Other player buttons")]
-    [SerializeField] private TMPro.TMP_Text[] playerNames = new TMPro.TMP_Text[4];
+    [Header("Other players")]
+    [SerializeField] private Button[] playerButtons = new Button[4];
 
     // Update these params as player clicks UI buttons 
     private ActionData action = new ActionData();
 
-    private void Awake()
+    private void Start()
     {
 
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
-            playerNames[i].text = GameManager.Instance.Players[i].characterData.playerName;
+            playerButtons[i].GetComponentInChildren<TMPro.TMP_Text>().text = GameManager.Instance.Players[i].characterData.playerName;
         }
 
     }
@@ -68,6 +68,13 @@ public class GameUIController : MonoBehaviour
     {
         // Save actual attack event somewhere to wait for action phace
         GameManager.Instance.MakeAction(action);
+
+        // Check ID
+        int id = choosingPlayer.ID + 1;
+        if (id < GameManager.Instance.Players.Count)
+            PlayerTurnUI.Instance.StartPlayerTurn(GameManager.Instance.Players[choosingPlayer.ID + 1]);
+        else
+            GameManager.Instance.RoundEnd();
     }
 
     public void ChangeActionAttack()
