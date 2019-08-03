@@ -2101,7 +2101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnTime: 120
+  timer: 0
   gameUI: {fileID: 1289821417}
+  choosingPlayer: {fileID: 0}
 --- !u!1 &844865267
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,6 +3044,7 @@ MonoBehaviour:
   traitorUI: {fileID: 524423101}
   attackWindowUI: {fileID: 1747370491}
   inventoryWindowUI: {fileID: 1236506069}
+  targetButtons: []
 --- !u!1 &1303392278
 GameObject:
   m_ObjectHideFlags: 0
@@ -5385,6 +5388,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 461fe5e5fbc5b4b4dbcdb0f5e65e5acc, type: 3}
+--- !u!1001 &4021002323296166251
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4021002323822464865, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_Name
+      value: Tumbleweed_Holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323822464871, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021002323723597200, guid: 00aa82c3bd96aed49bc50e8a5b52320f,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00aa82c3bd96aed49bc50e8a5b52320f, type: 3}
 --- !u!1001 &5182697921898391995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6535,7 +6612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6440085103517787312
 GameObject:
   m_ObjectHideFlags: 0
@@ -6868,8 +6945,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 359.6625, y: -951.151}
-  m_SizeDelta: {x: 719.325, y: 658.10065}
+  m_AnchoredPosition: {x: 359.6625, y: -640.10065}
+  m_SizeDelta: {x: 719.325, y: 1280.2013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6440085103818361512
 GameObject:
