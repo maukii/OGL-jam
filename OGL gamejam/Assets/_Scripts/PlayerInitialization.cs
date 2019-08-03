@@ -52,7 +52,7 @@ public class PlayerInitialization : MonoBehaviour
         }
 
         // Save player name and characterChoice to GameManager
-        GameManager.Instance.SavePlayerData(playerTurn, playerNameInputField.text, activeCharacter);
+        //GameManager.Instance.SavePlayerData(playerTurn, playerNameInputField.text, activeCharacter);
 
         // Disable chosenCharacter so others can't choose same one
         var button = activeCharacter.GetComponent<Button>();

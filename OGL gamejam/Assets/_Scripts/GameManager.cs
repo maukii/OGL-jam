@@ -3,12 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player
-{
-    public int id;
-    public string name;
-    public GameObject chosenCharacter;
-}
 
 public class GameManager : MonoBehaviour
 {
@@ -16,9 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
 
-    [SerializeField] private bool debugGameStateChanges = false;
-
-    [SerializeField] private Player[] players = new Player[4];
+    [SerializeField] private Character[] players = new Character[4];
 
     // TODO:: Keep track of which players turn it is
 
@@ -29,6 +21,11 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i] = new Character();
         }
     }
 
@@ -53,11 +50,11 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void SavePlayerData(int playerNumber, string name, GameObject characterChoice)
+    public void SavePlayerData(int playerNumber, string name/*, characterp characterChoice*/)
     {
         // Save player inputs (name and character)
-        players[playerNumber].name = name;
-        players[playerNumber].chosenCharacter = characterChoice;
+        players[playerNumber].PlayerName = name;
+        //players[playerNumber].CharacterProfile = characterChoice;
     }
 
     // TODO:: Make some UI controller to allow players to use when calling turn decision actions 
