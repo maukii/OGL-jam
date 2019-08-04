@@ -53,6 +53,8 @@ public class GameUIController : MonoBehaviour
             playerButtons[i].GetComponentInChildren<TMPro.TMP_Text>().text = GameManager.Instance.Players[i].characterData.playerName;
         }
 
+        PlayerTurnUI.Instance.StartPlayerTurn(GameManager.Instance.Players[0]);
+
     }
 
     #region public UI funcs
@@ -60,6 +62,7 @@ public class GameUIController : MonoBehaviour
     // Does basic UI reset when turn has ended
     public void TurnChange(Character newPlayer)
     {
+
         choosingPlayer = newPlayer;
 
         tumbleweed.SetActive(false);
@@ -73,6 +76,7 @@ public class GameUIController : MonoBehaviour
 
         ChangeOpenMenu(menuBasicUI);
         action.user = choosingPlayer;
+
     }
 
     public void ConfirmAction()
@@ -85,16 +89,22 @@ public class GameUIController : MonoBehaviour
         if (id < GameManager.Instance.Players.Count)
             PlayerTurnUI.Instance.StartPlayerTurn(GameManager.Instance.Players[choosingPlayer.ID + 1]);
         else
+        {
+            actionScreenUI.SetActive(true);
+            privateScreenUI.SetActive(false);
             GameManager.Instance.RoundEnd();
+        }
     }
 
     public void ChangeActionAttack()
     {
         action.action = Action.Attack;
+        action.item = choosingPlayer.characterData.character.mainWeapon;
     }
     public void ChangeActionHeal()
     {
         action.action = Action.Heal;
+        action.item = choosingPlayer.characterData.character.potion;
     }
 
     public void ChangeTarget(Character target)
