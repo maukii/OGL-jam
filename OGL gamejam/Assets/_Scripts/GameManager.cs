@@ -20,7 +20,8 @@ public class PlayerData
 
 public class GameManager : MonoBehaviour
 {
-
+    public AudioSource musicAudioSource;
+    public AudioSource sfxAudioSource;
     public static GameManager Instance;
 
     [SerializeField] private float actionPhaceTime = 3f;
