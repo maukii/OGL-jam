@@ -110,15 +110,15 @@ public class PlayerInitialization : MonoBehaviour
     {
         maxHealth.fillAmount = profile.MaxHP / 100f;
 
-        int damageValue = Mathf.RoundToInt(profile.secondaryWeapon.Damage / 20);
-        int accuracyValue = Mathf.RoundToInt(profile.secondaryWeapon.HitChance / 20);
+        int damageValue = Mathf.RoundToInt(profile.mainWeapon.Damage / 5);
+        int accuracyValue = Mathf.RoundToInt(profile.mainWeapon.HitChance / 20);
         int healingValue = Mathf.RoundToInt(profile.MaxHP / 20);
 
         for (int i = 0; i < damage.Length; i++)
         {
-            damage[i].SetActive(damageValue >= i);
-            accuracy[i].SetActive(accuracyValue >= i);
-            healing[i].SetActive(healingValue >= i);
+            damage[i].SetActive(damageValue > i);
+            accuracy[i].SetActive(accuracyValue > i);
+            healing[i].SetActive(healingValue > i);
         }
     }
 
