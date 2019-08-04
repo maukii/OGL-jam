@@ -85,7 +85,7 @@ public class GameUIController : MonoBehaviour
         privateScreenUI.SetActive(true);
 
         // Update private health bar in UI
-        privateHealthBar.fillAmount = choosingPlayer.HP;
+        privateHealthBar.fillAmount = choosingPlayer.HP/choosingPlayer.profile.MaxHP;
 
         // Traitor UI
         if (choosingPlayer.characterData.isTrator)
