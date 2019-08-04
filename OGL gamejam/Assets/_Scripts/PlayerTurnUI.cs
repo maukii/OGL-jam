@@ -15,6 +15,7 @@ public class PlayerTurnUI : MonoBehaviour
 
     public Character choosingPlayer;
 
+    public GameObject doActionsUI;
 
     private void Awake()
     {

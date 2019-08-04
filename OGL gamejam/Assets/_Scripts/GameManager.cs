@@ -74,13 +74,19 @@ public class GameManager : MonoBehaviour
     // Call this when all players have made their choice
     public void RoundEnd()
     {
+        PlayerTurnUI.Instance.doActionsUI.SetActive(true);
+    }
 
+    public void ExecuteAction()
+    {
+        PlayerTurnUI.Instance.doActionsUI.SetActive(false);
         StartCoroutine(ExecuteActions());
-
     }
 
     private IEnumerator ExecuteActions()
     {
+        yield return new WaitForSeconds(1f);
+
         // Get enemys turn
         FindObjectOfType<EnemyAI>().Think();
 
@@ -88,9 +94,7 @@ public class GameManager : MonoBehaviour
         foreach (var action in roundActions)
         {
             action.ExecuteAction();
-            Debug.LogError(actionWaitTime);
             yield return new WaitForSeconds(actionWaitTime);
-            Debug.LogError("Action done");
         }
 
         // Clear the roundActions list
