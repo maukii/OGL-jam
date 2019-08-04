@@ -4551,7 +4551,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1592096577}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 796804605}
+        m_MethodName: ChangeOpenMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1722313423}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1592096577
@@ -5695,7 +5706,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2091198390660135780, guid: f92b3d94877907b4a81f723fdcfaea38, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f92b3d94877907b4a81f723fdcfaea38, type: 3}
 --- !u!1001 &2044854318
 PrefabInstance:
