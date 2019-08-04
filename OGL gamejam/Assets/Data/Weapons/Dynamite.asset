@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc661624143205e4b95a73bf89f882c9, type: 3}
-  m_Name: Water cannon
+  m_Name: Dynamite
   m_EditorClassIdentifier: 
   Name: Dynamite
-  Description: If this hits, you better pray for your God. If it hits, that is.
+  Description: If it hits, that's it.
   Icon: {fileID: 0}
   Sound: {fileID: 8300000, guid: 87eb3f58ebe6e3c4f992dd7c233211d6, type: 3}
   Damage: 30
