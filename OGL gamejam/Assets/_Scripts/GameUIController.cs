@@ -85,7 +85,7 @@ public class GameUIController : MonoBehaviour
         privateScreenUI.SetActive(true);
 
         // Update private health bar in UI
-        privateHealthBar.fillAmount = choosingPlayer.HP/choosingPlayer.profile.MaxHP;
+        privateHealthBar.fillAmount = choosingPlayer.HP;
 
         // Traitor UI
         if (choosingPlayer.characterData.isTrator)
@@ -116,16 +116,24 @@ public class GameUIController : MonoBehaviour
         GameManager.Instance.MakeAction(action);
 
         // Check ID
-        int id = choosingPlayer.ID + 1;
-        if (id < GameManager.Instance.Players.Count)
-            PlayerTurnUI.Instance.StartPlayerTurn(GameManager.Instance.Players[choosingPlayer.ID + 1]);
-        else
+        int id = -1;
+        for(int i=choosingPlayer.ID+1;i<GameManager.Instance.Players.Count;i++)
+        {
+            if(!GameManager.Instance.Players[i].isDead)
+            {
+                PlayerTurnUI.Instance.StartPlayerTurn(GameManager.Instance.Players[i]);
+                id = i;
+                break;
+            }
+        }
+        if (id ==-1)
         {
             actionScreenUI.SetActive(true);
             privateScreenUI.SetActive(false);
 
             StartCoroutine(EndRound());
         }
+            
     }
 
 

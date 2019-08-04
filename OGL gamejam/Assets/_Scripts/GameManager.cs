@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Failed to assign " + id);
         }
+            Players.Sort((x,y) => x.ID.CompareTo(y.ID));
     }
 
     // Call this when all players have made their choice
@@ -98,7 +99,15 @@ public class GameManager : MonoBehaviour
     private IEnumerator StartNextRound()
     {
         yield return new WaitForSeconds(actionPhaceTime);
-        PlayerTurnUI.Instance.StartPlayerTurn(Players[0]);
+        for(int i=0;i<GameManager.Instance.Players.Count;i++)
+        {
+            if(!GameManager.Instance.Players[i].isDead)
+            {
+                PlayerTurnUI.Instance.StartPlayerTurn(Players[i]);
+                break;
+            }
+        }
+
     }
 
 

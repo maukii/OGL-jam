@@ -37,7 +37,17 @@ public class Character : MonoBehaviour
         OnHpChange.Invoke();
         if(HP<0 || Mathf.Approximately(HP,0))
         {
-        //  GameManager.Instance.Players.Find(x=>ID=x.ID);
+            
+            /*/for(int i=0;i<GameManager.Instance.Players.Count;i++)
+            {
+                if(GameManager.Instance.Players[i].ID==ID)
+                {
+                    GameManager.Instance.Players.RemoveAt(i);
+                    break;
+                }
+            }*/
+
+           
           isDead = true;
           portrait.color = Color.black;
         }
