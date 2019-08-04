@@ -15,10 +15,11 @@ MonoBehaviour:
   Name: Rifle
   Description: Basic rifle
   Icon: {fileID: 0}
-  Sound: {fileID: 0}
+  Sound: {fileID: 8300000, guid: 87eb3f58ebe6e3c4f992dd7c233211d6, type: 3}
   Damage: 33
   HitChance: 100
   GoreEffect: {fileID: 3134199600283486476, guid: 784efa55162d5cf43bd583aaecb0ff80,
     type: 3}
   MissEffect: {fileID: 8156759254607993216, guid: 127c23ec9d9dae94590464a87e92ce2f,
     type: 3}
+  missAudio: {fileID: 8300000, guid: 8f8c622ad36e75244b911b876c12ad0a, type: 3}

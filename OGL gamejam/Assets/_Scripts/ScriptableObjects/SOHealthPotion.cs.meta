@@ -5,7 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - Icon: {instanceID: 0}
-  - Sound: {instanceID: 0}
+  - Sound: {fileID: 8300000, guid: aa8549d9d6843174dba3b9e6be7c25da, type: 3}
   - HealingEffect: {fileID: 6430873544054168889, guid: 278a37ee9dfaa8a4da4c7add42fe746f,
       type: 3}
   executionOrder: 0

@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public bool IsAI = false;
 
     private SOCharacterProfile profile;
+    private AudioSource sfxAudiosource;
      public UnityEvent OnHpChange; //Fires on all hp- change events. 
      public UnityEvent OnCharacterChange;
     [SerializeField] private Transform effectLocalPosition;
@@ -22,6 +23,7 @@ public class Character : MonoBehaviour
         }
         profile = characterData.character;
         OnCharacterChange.Invoke();
+        sfxAudiosource = GameManager.Instance.sfxAudioSource;
 
     }
     private void Start() 
@@ -54,6 +56,8 @@ public class Character : MonoBehaviour
             if(weapon.GoreEffect)
             {
                 Instantiate(weapon.GoreEffect,effectLocalPosition);
+                sfxAudiosource.PlayOneShot(weapon.Sound);
+
             }
         }
         else
@@ -61,6 +65,7 @@ public class Character : MonoBehaviour
             if(weapon.MissEffect)
             {
                 Instantiate(weapon.MissEffect,effectLocalPosition);
+                sfxAudiosource.PlayOneShot(weapon.missAudio);
             }
 
         }
@@ -72,6 +77,7 @@ public class Character : MonoBehaviour
         if(potion.HealingEffect)
         {
             Instantiate(potion.HealingEffect,effectLocalPosition);
+            sfxAudiosource.PlayOneShot(potion.Sound);
         }
     }
 

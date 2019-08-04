@@ -13,6 +13,7 @@ public class SOWeapon : SOBaseData {
 
    public GameObject GoreEffect;
    public GameObject MissEffect;
+   public AudioClip missAudio;
 
 
 }
