@@ -20,7 +20,7 @@ public class UpdateHealthBar : MonoBehaviour
     {
         if(!Mathf.Approximately(character.HP,0))
         {
-            healthBar.fillAmount = character.HP/100;
+            healthBar.fillAmount = character.HP/character.profile.MaxHP;
         }
         else
         {

@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
 
     public bool IsAI = false;
 
-    private SOCharacterProfile profile;
+    public SOCharacterProfile profile;
     private AudioSource sfxAudiosource;
      public UnityEvent OnHpChange; //Fires on all hp- change events. 
      public UnityEvent OnCharacterChange;
