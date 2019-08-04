@@ -95,10 +95,12 @@ public class EnemyAI : MonoBehaviour
         bool targetFound = false;
         Character target;
         SOWeapon selectedWeapon = Random.Range(0,2)==0?profile.mainWeapon:profile.secondaryWeapon;
+        int i=0;
         do
         {
+            
             target = manager.Players[Random.Range(0,manager.Players.Count)];
-            if(target.characterData.isTrator && target.HP<maxDamage)
+            if((target.characterData.isTrator && target.HP<=maxDamage)||target.isDead)
             {
                 continue;
             }
@@ -106,9 +108,14 @@ public class EnemyAI : MonoBehaviour
             {
                 targetFound = true;
             }
+            i++;
+            if(i>10)
+            {
+                continue;
+            }
         } while(!targetFound);
-       manager.MakeAction(AI,target,Action.Attack,selectedWeapon);
-       Debug.Log("Attacked");
+       if(targetFound) 
+        manager.MakeAction(AI,target,Action.Attack,selectedWeapon);
     }
 
     
