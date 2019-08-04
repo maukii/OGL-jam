@@ -3,7 +3,11 @@ guid: 3e9875cce8a74784285ba9662f2bc14b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Icon: {instanceID: 0}
+  - Sound: {instanceID: 0}
+  - HealingEffect: {fileID: 6430873544054168889, guid: 278a37ee9dfaa8a4da4c7add42fe746f,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

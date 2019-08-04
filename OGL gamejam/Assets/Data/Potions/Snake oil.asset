@@ -17,5 +17,5 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Sound: {fileID: 0}
   HealAmount: 5
-  HealingEffect: {fileID: 8408287296245250356, guid: 67291ed6586f4bc4e8db956af840d47d,
+  HealingEffect: {fileID: 6430873544054168889, guid: 278a37ee9dfaa8a4da4c7add42fe746f,
     type: 3}

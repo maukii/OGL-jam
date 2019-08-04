@@ -3,7 +3,13 @@ guid: fc661624143205e4b95a73bf89f882c9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Icon: {instanceID: 0}
+  - Sound: {instanceID: 0}
+  - GoreEffect: {fileID: 3134199600283486476, guid: 784efa55162d5cf43bd583aaecb0ff80,
+      type: 3}
+  - MissEffect: {fileID: 8156759254607993216, guid: 127c23ec9d9dae94590464a87e92ce2f,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
