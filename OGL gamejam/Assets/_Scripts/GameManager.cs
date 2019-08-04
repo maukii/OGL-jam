@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    [SerializeField] private float actionPhaceTime = 3f;
+
     // Use these to assaing player names and graphics
     [SerializeField] private List<PlayerData> playerDatas = new List<PlayerData>(4); 
     public List<Character> Players;
@@ -77,6 +79,14 @@ public class GameManager : MonoBehaviour
         // Clear the roundActions list
         roundActions.Clear();
 
+        StartCoroutine(StartNextRound());
+
+    }
+
+    private IEnumerator StartNextRound()
+    {
+        yield return new WaitForSeconds(actionPhaceTime);
+        PlayerTurnUI.Instance.StartPlayerTurn(Players[0]);
     }
 
 

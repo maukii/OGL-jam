@@ -28,23 +28,7 @@ public class TurnManager : MonoBehaviour
             Destroy(gameObject);
 
         gameUI = GetComponent<GameUIController>();
-    }
-
-    // Players list is populated
-    private void Start()
-    {
-        players = GameManager.Instance.Players;
         turnUI = PlayerTurnUI.Instance;
-
-        turnUI.okButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => StartTurn());
-
-        // Choose who starts / randomize order / go in order ??
-        choosingPlayer = players[0];
-
-        turnUI.StartPlayerTurn(choosingPlayer);
-
-        if (gameUI != null)
-            gameUI.TurnChange(choosingPlayer);
     }
 
     private void StartTurn()
@@ -90,7 +74,6 @@ public class TurnManager : MonoBehaviour
             EndTurn();
         }
     }
-
 
     private void OnDestroy()
     {
