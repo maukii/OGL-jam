@@ -24,6 +24,8 @@ public class GameUIController : MonoBehaviour
 
     [SerializeField] private GameObject tratorUI;
 
+    [SerializeField] private Image privateHealthBar;
+
     [Header("Weapon UI")]
 
     [SerializeField] private TMPro.TMP_Text weaponName;
@@ -81,6 +83,9 @@ public class GameUIController : MonoBehaviour
         tumbleweed.SetActive(false);
         actionScreenUI.SetActive(false);
         privateScreenUI.SetActive(true);
+
+        // Update private health bar in UI
+        privateHealthBar.fillAmount = choosingPlayer.HP;
 
         // Traitor UI
         if (choosingPlayer.characterData.isTrator)

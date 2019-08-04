@@ -12,6 +12,13 @@ public class PlayerInitialization : MonoBehaviour
     [SerializeField] private TMP_InputField playerNameInputField;
     [SerializeField] private TMP_Text characterName;
     [SerializeField] private TMP_Text characterDescription;
+
+    [Header("Character stats")]
+    [SerializeField] private Image maxHealth;
+    [SerializeField] private GameObject[] damage = new GameObject[5];
+    [SerializeField] private GameObject[] accuracy = new GameObject[5];
+    [SerializeField] private GameObject[] healing = new GameObject[5];
+
     private PlayerTurnUI turnUI;
     private int playerTurn = 1;
 
@@ -40,6 +47,9 @@ public class PlayerInitialization : MonoBehaviour
         characterName.text = selectedProfile.Name;
         characterDescription.text = selectedProfile.Description;
         // Highlight somehow
+
+        CharacterChanged(selectedProfile);
+
     }
 
     private void RemoveCharacterHighlight(GameObject go)
@@ -95,5 +105,22 @@ public class PlayerInitialization : MonoBehaviour
             SceneChangeManager.Instance.DoFadeOut();
         }
     }
+
+    private void CharacterChanged(SOCharacterProfile profile)
+    {
+        maxHealth.fillAmount = profile.MaxHP / 100f;
+
+        int damageValue = Mathf.RoundToInt(profile.secondaryWeapon.Damage / 20);
+        int accuracyValue = Mathf.RoundToInt(profile.secondaryWeapon.HitChance / 20);
+        int healingValue = Mathf.RoundToInt(profile.MaxHP / 20);
+
+        for (int i = 0; i < damage.Length; i++)
+        {
+            damage[i].SetActive(damageValue >= i);
+            accuracy[i].SetActive(accuracyValue >= i);
+            healing[i].SetActive(healingValue >= i);
+        }
+    }
+
 
 }
