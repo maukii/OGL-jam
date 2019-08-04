@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     public int ID = 0;
     [HideInInspector] public float HP = 100f;
     public PlayerData characterData;
-
+    [SerializeField] private Image portrait;
     public bool IsAI = false;
-
+    [HideInInspector] public bool isDead = false;
     public SOCharacterProfile profile;
     private AudioSource sfxAudiosource;
      public UnityEvent OnHpChange; //Fires on all hp- change events. 
@@ -36,7 +37,9 @@ public class Character : MonoBehaviour
         OnHpChange.Invoke();
         if(HP<0 || Mathf.Approximately(HP,0))
         {
-            Debug.Log("Implement death");
+        //  GameManager.Instance.Players.Find(x=>ID=x.ID);
+          isDead = true;
+          portrait.color = Color.black;
         }
     }
 
