@@ -18,7 +18,12 @@ public class Character : MonoBehaviour
     [SerializeField] private Transform effectLocalPosition;
     private void Awake() 
     {
-        if(!IsAI)
+
+
+    }
+    private void Start() 
+    {
+        if (!IsAI)
         {
             GameManager.Instance.AssignPlayer(ID, this);
         }
@@ -26,9 +31,6 @@ public class Character : MonoBehaviour
         OnCharacterChange.Invoke();
         sfxAudiosource = GameManager.Instance.sfxAudioSource;
 
-    }
-    private void Start() 
-    {
         HP = profile.MaxHP;
     }
     public void GetDamage(float damage)

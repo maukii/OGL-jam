@@ -33,7 +33,8 @@ public class GameOver : MonoBehaviour
     public void MainMenu()
     {
         // Reset everything
-        
+        GameManager.Instance.Players.Clear();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
 }

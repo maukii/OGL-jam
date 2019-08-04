@@ -88,7 +88,9 @@ public class GameManager : MonoBehaviour
         foreach (var action in roundActions)
         {
             action.ExecuteAction();
+            Debug.LogError(actionWaitTime);
             yield return new WaitForSeconds(actionWaitTime);
+            Debug.LogError("Action done");
         }
 
         // Clear the roundActions list
@@ -104,13 +106,26 @@ public class GameManager : MonoBehaviour
     private void CheckForWinLose()
     {
         var sherif = FindObjectOfType<EnemyAI>().GetComponent<Character>();
+        bool playersDead = true;
+
+        for (int i = 0; i < Players.Count; i++)
+        {
+            if (Players[i].characterData.isTrator)
+                continue;
+
+            if (!Players[i].isDead)
+            {
+                playersDead = false;
+                break;
+            }
+        }
 
         if (sherif.isDead)
         {
             sherifDead = true;
             SceneChangeManager.Instance.DoFadeOut();
         }
-        else if (Players.Count == 0)
+        else if (playersDead)
         {
             sherifDead = false;
             SceneChangeManager.Instance.DoFadeOut();
@@ -123,7 +138,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator StartNextRound()
     {
-        yield return new WaitForSeconds(actionPhaceTime);
         for(int i=0;i<GameManager.Instance.Players.Count;i++)
         {
             if(!GameManager.Instance.Players[i].isDead)
@@ -133,6 +147,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        yield return null;
     }
 
 
