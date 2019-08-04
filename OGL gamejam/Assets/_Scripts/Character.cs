@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     private SOCharacterProfile profile;
      public UnityEvent OnHpChange; //Fires on all hp- change events. 
      public UnityEvent OnCharacterChange;
-
+    [SerializeField] private Transform effectLocalPosition;
     private void Awake() 
     {
         if(!IsAI)
@@ -53,15 +53,14 @@ public class Character : MonoBehaviour
             targetCharacter.GetDamage(weapon.Damage);
             if(weapon.GoreEffect)
             {
-                Instantiate(weapon.GoreEffect,targetCharacter.transform.position, Quaternion.identity);
+                Instantiate(weapon.GoreEffect,effectLocalPosition);
             }
         }
         else
         {
-            Debug.Log("Missed target");
             if(weapon.MissEffect)
             {
-                Instantiate(weapon.MissEffect,targetCharacter.transform.position, Quaternion.identity);
+                Instantiate(weapon.MissEffect,effectLocalPosition);
             }
 
         }
@@ -72,7 +71,7 @@ public class Character : MonoBehaviour
         targetCharacter.GainHP(potion.HealAmount);
         if(potion.HealingEffect)
         {
-            Instantiate(potion.HealingEffect,targetCharacter.transform.position, Quaternion.identity);
+            Instantiate(potion.HealingEffect,effectLocalPosition);
         }
     }
 
@@ -87,4 +86,22 @@ public class Character : MonoBehaviour
     {
         Attack(profile.mainWeapon,this);
     }
+
+    [ContextMenu("ShowDamageEffect")]
+    public void ShowGoreEffect()
+    {
+        Instantiate(profile.mainWeapon.GoreEffect,effectLocalPosition);
+    }
+    [ContextMenu("ShowHealingEffect")]
+    public void ShowHealingEffect()
+    {
+        Instantiate(profile.potion.HealingEffect,effectLocalPosition);
+    }
+
+    [ContextMenu("ShowMissEffect")]
+    public void ShowMissEffect()
+    {
+        Instantiate(profile.mainWeapon.MissEffect,effectLocalPosition);
+    }
+
 }

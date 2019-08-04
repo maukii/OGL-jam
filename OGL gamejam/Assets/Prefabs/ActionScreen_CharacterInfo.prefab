@@ -195,7 +195,7 @@ MonoBehaviour:
   characterData:
     playerName: 
     isTrator: 0
-    character: {fileID: 0}
+    character: {fileID: 11400000, guid: 7925c68a71d2b824b8ffadbd34cf4f55, type: 2}
   IsAI: 0
   OnHpChange:
     m_PersistentCalls:
@@ -229,6 +229,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  effectLocalPosition: {fileID: 2212220740799910455}
 --- !u!114 &4179176703743167085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,12 +375,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 828176331066097703, guid: 2dc4a8ce30c006f41974bf2993cf868d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4c4ec7c65c9025a40abee01f7a5c37a8,
-        type: 3}
     - target: {fileID: 1701745469666275153, guid: 2dc4a8ce30c006f41974bf2993cf868d,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -421,6 +416,12 @@ PrefabInstance:
       propertyPath: m_FillOrigin
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 828176331066097703, guid: 2dc4a8ce30c006f41974bf2993cf868d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c4ec7c65c9025a40abee01f7a5c37a8,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dc4a8ce30c006f41974bf2993cf868d, type: 3}
 --- !u!224 &7475796583437699331 stripped
