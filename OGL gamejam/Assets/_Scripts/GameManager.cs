@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<ActionData> roundActions = new List<ActionData>();
 
 
+    [Header("Turn stuff")]
+    [SerializeField] private float actionWaitTime = .75f;
+ 
     private void Awake()
     {
         if (Instance == null)
@@ -69,19 +72,24 @@ public class GameManager : MonoBehaviour
     public void RoundEnd()
     {
 
-        // Send message to enemy to make it's decision and add it to the list
+        StartCoroutine(ExecuteActions());
 
+    }
+
+    private IEnumerator ExecuteActions()
+    {
         // Execute them (in order)
         foreach (var action in roundActions)
         {
             action.ExecuteAction();
+            yield return new WaitForSeconds(actionWaitTime);
         }
 
         // Clear the roundActions list
         roundActions.Clear();
 
+        // Start a new round
         StartCoroutine(StartNextRound());
-
     }
 
     private IEnumerator StartNextRound()

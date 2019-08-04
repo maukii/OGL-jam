@@ -18,7 +18,7 @@ public class TurnManager : MonoBehaviour
     private GameUIController gameUI;
 
     [HideInInspector] public Character choosingPlayer;
-
+    [SerializeField] private Character enemy;
 
     private void Awake()
     {
@@ -54,6 +54,7 @@ public class TurnManager : MonoBehaviour
         // Else send message to GameManager.Instance.EndRound();
         else
         {
+            enemy.GetComponent<EnemyAI>().Think();
             GameManager.Instance.RoundEnd();
         }
 
