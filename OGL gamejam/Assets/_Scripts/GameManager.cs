@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<ActionData> roundActions = new List<ActionData>();
 
 
+    public bool sherifDead = false;
+
     [Header("Turn stuff")]
     [SerializeField] private float actionWaitTime = .75f;
  
@@ -92,8 +94,31 @@ public class GameManager : MonoBehaviour
         // Clear the roundActions list
         roundActions.Clear();
 
+        // Check win lsoe cons
+        CheckForWinLose();
+
         // Start a new round
         StartCoroutine(StartNextRound());
+    }
+
+    private void CheckForWinLose()
+    {
+        var sherif = FindObjectOfType<EnemyAI>().GetComponent<Character>();
+
+        if (sherif.isDead)
+        {
+            sherifDead = true;
+            SceneChangeManager.Instance.DoFadeOut();
+        }
+        else if (Players.Count == 0)
+        {
+            sherifDead = false;
+            SceneChangeManager.Instance.DoFadeOut();
+        }
+        else
+        {
+            StartCoroutine(StartNextRound());
+        }
     }
 
     private IEnumerator StartNextRound()

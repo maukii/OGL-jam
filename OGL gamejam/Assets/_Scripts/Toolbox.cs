@@ -20,6 +20,10 @@ public class Toolbox : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
         SceneChangeManager.Instance.LoadNextScene();
     }
 
