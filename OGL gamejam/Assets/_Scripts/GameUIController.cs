@@ -21,7 +21,8 @@ public class GameUIController : MonoBehaviour
     [SerializeField] private GameObject menuTargetUI;
     [SerializeField] private GameObject tumbleweed;
 
-
+    [SerializeField] private GameObject tratorUI;
+     
     [Header("Player dependant")]
 
     // Player stuff
@@ -69,6 +70,12 @@ public class GameUIController : MonoBehaviour
         actionScreenUI.SetActive(false);
         privateScreenUI.SetActive(true);
 
+        // Traitor UI
+        if (choosingPlayer.characterData.isTrator)
+            tratorUI.SetActive(true);
+        else
+            tratorUI.SetActive(false);
+
         // Change player spesific stuff
         portraitImage.sprite = newPlayer.characterData.character.Icon;
         characterName.text = newPlayer.characterData.playerName;
@@ -92,8 +99,16 @@ public class GameUIController : MonoBehaviour
         {
             actionScreenUI.SetActive(true);
             privateScreenUI.SetActive(false);
-            GameManager.Instance.RoundEnd();
+
+            StartCoroutine(EndRound());
         }
+    }
+
+
+    private IEnumerator EndRound()
+    {
+        yield return new WaitForSeconds(.75f);
+        GameManager.Instance.RoundEnd();
     }
 
     public void ChangeActionAttack()
