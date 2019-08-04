@@ -19,10 +19,22 @@ public class GameUIController : MonoBehaviour
     [SerializeField] private GameObject menuBasicUI;
     [SerializeField] private GameObject menuInventoryUI;
     [SerializeField] private GameObject menuTargetUI;
+    [SerializeField] private GameObject menuWeapon;
     [SerializeField] private GameObject tumbleweed;
 
     [SerializeField] private GameObject tratorUI;
-     
+
+    [Header("Weapon UI")]
+
+    [SerializeField] private TMPro.TMP_Text weaponName;
+    [SerializeField] private TMPro.TMP_Text weaponDescription;
+    [SerializeField] private TMPro.TMP_Text weapon1;
+    [SerializeField] private TMPro.TMP_Text weapon2;
+
+    [SerializeField] private GameObject[] weaponDamage = new GameObject[5];
+    [SerializeField] private GameObject[] weaponAccuracy = new GameObject[5];
+
+
     [Header("Player dependant")]
 
     // Player stuff
@@ -76,6 +88,13 @@ public class GameUIController : MonoBehaviour
         else
             tratorUI.SetActive(false);
 
+        // Weapon UI
+        weapon1.text = choosingPlayer.characterData.character.mainWeapon.Name;
+        weapon2.text = choosingPlayer.characterData.character.secondaryWeapon.Name;
+
+        weaponName.text = choosingPlayer.characterData.character.mainWeapon.name;
+        weaponDescription.text = choosingPlayer.characterData.character.mainWeapon.Description;
+
         // Change player spesific stuff
         portraitImage.sprite = newPlayer.characterData.character.Icon;
         characterName.text = newPlayer.characterData.playerName;
@@ -127,11 +146,48 @@ public class GameUIController : MonoBehaviour
         action.target = target;
     }
 
+
+    public void ChangeWeapon(bool main)
+    {
+        if (main)
+        {
+            action.item = choosingPlayer.characterData.character.mainWeapon;
+            weaponName.text = choosingPlayer.characterData.character.mainWeapon.name;
+            weaponDescription.text = choosingPlayer.characterData.character.mainWeapon.Description;
+
+            int damage = Mathf.RoundToInt(choosingPlayer.characterData.character.mainWeapon.Damage / 20);
+            int accuracy = Mathf.RoundToInt(choosingPlayer.characterData.character.mainWeapon.HitChance / 20);
+
+            for (int i = 0; i < weaponDamage.Length; i++)
+            {
+                weaponDamage[i].SetActive(damage >= i);
+                weaponAccuracy[i].SetActive(accuracy >= i);
+            }
+        }
+        else
+        {
+            action.item = choosingPlayer.characterData.character.secondaryWeapon;
+            weaponName.text = choosingPlayer.characterData.character.secondaryWeapon.name;
+            weaponDescription.text = choosingPlayer.characterData.character.secondaryWeapon.Description;
+
+            int damage = Mathf.RoundToInt(choosingPlayer.characterData.character.secondaryWeapon.Damage / 20);
+            int accuracy = Mathf.RoundToInt(choosingPlayer.characterData.character.secondaryWeapon.HitChance / 20);
+
+            for (int i = 0; i < weaponDamage.Length; i++)
+            {
+                weaponDamage[i].SetActive(damage >= i);
+                weaponAccuracy[i].SetActive(accuracy >= i);
+            }
+        }
+    }
+
+
     public void ChangeOpenMenu(GameObject whatToOpen)
     {
         menuBasicUI.SetActive(false);
         menuInventoryUI.SetActive(false);
         menuTargetUI.SetActive(false);
+        menuWeapon.SetActive(false);
 
         whatToOpen.SetActive(true);
     }
