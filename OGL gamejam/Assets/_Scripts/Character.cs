@@ -55,7 +55,7 @@ public class Character : MonoBehaviour
             targetCharacter.GetDamage(weapon.Damage);
             if(weapon.GoreEffect)
             {
-                Instantiate(weapon.GoreEffect,effectLocalPosition);
+                Instantiate(weapon.GoreEffect,targetCharacter.effectLocalPosition);
                 sfxAudiosource.PlayOneShot(weapon.Sound);
 
             }
@@ -64,7 +64,7 @@ public class Character : MonoBehaviour
         {
             if(weapon.MissEffect)
             {
-                Instantiate(weapon.MissEffect,effectLocalPosition);
+                Instantiate(weapon.MissEffect,targetCharacter.effectLocalPosition);
                 sfxAudiosource.PlayOneShot(weapon.missAudio);
             }
 
@@ -76,7 +76,7 @@ public class Character : MonoBehaviour
         targetCharacter.GainHP(potion.HealAmount);
         if(potion.HealingEffect)
         {
-            Instantiate(potion.HealingEffect,effectLocalPosition);
+            Instantiate(potion.HealingEffect,targetCharacter.effectLocalPosition);
             sfxAudiosource.PlayOneShot(potion.Sound);
         }
     }
