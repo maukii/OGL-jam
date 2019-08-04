@@ -54,7 +54,6 @@ public class TurnManager : MonoBehaviour
         // Else send message to GameManager.Instance.EndRound();
         else
         {
-            enemy.GetComponent<EnemyAI>().Think();
             GameManager.Instance.RoundEnd();
         }
 

@@ -78,6 +78,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator ExecuteActions()
     {
+        // Get enemys turn
+        FindObjectOfType<EnemyAI>().Think();
+
         // Execute them (in order)
         foreach (var action in roundActions)
         {
